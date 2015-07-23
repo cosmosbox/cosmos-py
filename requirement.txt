@@ -1,0 +1,9 @@
+etcd==2.0.8
+gevent==1.0.2
+greenlet==0.4.7
+msgpack-python==0.4.6
+pytz==2013.8
+pyzmq==14.7.0
+requests==2.1.0
+wheel==0.24.0
+zerorpc==0.5.1
