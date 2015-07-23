@@ -23,15 +23,13 @@ def watchTask():
 	print 'watch finished...'
 
 def task1():
-	def asyncSet():
+
+	for i in range(10):
+		print 'now set...'
 		setVal = random.randint(0,99)
 		print 'real set - %s' % setVal
 		client.set('/nodes/abc', setVal)
 		print 'set ok - %s' % setVal
-
-	for i in range(5):
-		print 'now set...'
-		Greenlet.spawn(asyncSet).join()
 	print('Finished!!!!!!!')
 
 def task2():
@@ -39,14 +37,11 @@ def task2():
 		val = client.read('/nodes/abc')
 		print 'get ok - %s' % val
 
-	for i in range(5):
+	for i in range(10):
 		print 'now get....'
-		Greenlet.spawn(asyncGet).join()
+		gevent.spawn(asyncGet).join()
 	print('Finished!!!!!!! Task2')
 
-
-
-gevent.sleep(1)
 
 gevent.joinall([
 	gevent.spawn(watchTask),
